@@ -1,68 +1,67 @@
-# 🛠️ ETL Data Processing Pipeline
 
-This repository contains a Python-based ETL (Extract, Transform, Load) pipeline implemented in a Jupyter Notebook. The notebook demonstrates a complete data workflow that reads raw data, processes it, and prepares it for downstream analysis or reporting.
+# 🧪 DSA 2040A - Lab 4: Transform in ETL (Shopping Trends)
 
-## 📌 Overview
+## 👩🏽‍💻 Student Info
+- **Name:** Queen Esther Kibegi  
+- **Student ID:** [Insert Your Student ID Here]  
+- **Course:** DSA 2040A – Data Science & Analytics  
+- **Lab:** Lab 4 – Transform in ETL  
+- **Dataset Used:** `Shopping_Trends.csv`
 
-This project showcases a structured ETL process using Python. The dataset includes customer purchase data with fields such as customer ID, age, gender, item purchased, category, purchase amount, and location. The notebook handles the following:
+## 📌 Objective
+The goal of this lab is to **extend the ETL pipeline** from Lab 3 by applying various transformation techniques to prepare the data for analysis.
 
-- **Extraction**: Loading data from a raw source (e.g., CSV or Excel).
-- **Transformation**: Data cleaning, formatting, filtering, and summarization.
-- **Loading**: Exporting the processed data into a new format for further use.
+## 📂 Project Structure
 
-The pipeline is useful for business analytics, sales trend analysis, and preparing clean datasets for machine learning or reporting dashboards.
-
----
-
-## ✅ Features
-
-- Clean and well-structured Jupyter Notebook.
-- Data cleaning and preprocessing steps (e.g., handling missing values, filtering).
-- Summary statistics and visual insights.
-- Uses popular Python libraries for efficient data handling.
-- Modular code cells that are easy to understand and reuse.
-
-## 🧰 Technologies Used
-
-- Python 3.x
-- Jupyter Notebook
-- pandas
-- numpy
-- matplotlib / seaborn (for data visualization, if applicable)
+ETL\_Extract\_QueenEstherKibegi\_<YourID>/
+├── etl\_extract.ipynb
+├── Shopping\_Trends.csv
+├── transformed\_full.csv
+├── transformed\_incremental.csv
+├── last\_extraction.txt
+├── .gitignore
+├── README.md
 
 
-## 🚀 Getting Started
+## 🔄 Transformations Performed
 
-### Prerequisites
+### ✅ Cleaning
+- Removed duplicate records from the dataset.
+- Handled missing values using **forward fill** method.
+- Dropped unnecessary columns like `Unnamed: 18` and `Unnamed: 20`.
 
-Make sure the following Python libraries are installed:
+### ✅ Enrichment
+- Added a new calculated column `Loyalty_Score = Previous Purchases / Age`.
+- Added a `Total_Price` column using `Purchase Amount (USD)` (assumed quantity = 1).
 
-```bash
-pip install pandas numpy jupyter matplotlib seaborn
-````
+### ✅ Structural
+- Converted `Order Date` to datetime format and restructured it to `YYYY-MM-DD` format for standardization.
 
-### Running the Notebook
+### ✅ Categorization
+- Created an `Age_Group` column by binning `Age` values into groups:
+  - `<18`, `18–25`, `26–35`, `36–50`, `51–70`, `71+`
 
-1. Clone this repository
-2. Navigate to the project directory:
-   cd etl-data-pipeline
-3. Launch Jupyter Notebook:
+### ✅ Filtering
+- Dropped irrelevant or empty columns (`Unnamed: 18`, `Unnamed: 20`) for cleaner analysis.
 
-   jupyter notebook etl_extract.ipyn
-## 📝 Usage
+## 🧾 Files Generated
 
-The notebook can be adapted for:
+| File Name                  | Description                              |
+|---------------------------|------------------------------------------|
+| `transformed_full.csv`    | Cleaned and enriched full dataset        |
+| `transformed_incremental.csv` | Transformed last 50 records (incremental) |
 
-* Customer analytics projects.
-* Sales trend visualization.
-* Input for machine learning preprocessing.
-* General data science education and demonstrations.
+## 🧠 Notebook Sections
 
-
-
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](LICENSE).
+Your Jupyter Notebook `etl_extract.ipynb` now includes:
+- **Section 1:** Introduction  
+- **Section 2:** Load Data  
+- **Section 3:** Data Preview  
+- **Section 4:** Transform Full Data  
+- **Section 5:** Transform Incremental Data  
 
 
+## 🛠️ Tools Used
+- **Language:** Python (Pandas)
+- **IDE:** Jupyter Notebook
+- **Environment:** Anaconda
