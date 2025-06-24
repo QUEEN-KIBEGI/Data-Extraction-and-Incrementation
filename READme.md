@@ -1,9 +1,42 @@
+LAB 3  README FILE
+# ETL Extract Lab - Shopping Trends Analysis
 
+**Student Name**: Queen Esther  
+
+
+## Project Description
+This Jupyter notebook demonstrates ETL (Extract, Transform, Load) operations focusing on the extraction phase. It implements both full and incremental extraction methods using a shopping trends dataset.
+
+## Tools Used
+- Python 3
+- pandas
+- Jupyter Notebook
+
+## Dataset
+The dataset contains synthetic shopping trend data with the following columns:
+- Customer ID
+- Age
+- Gender
+- Category
+- Purchase Amount (USD)
+- Payment Method
+- Review Rating
+- Purchase Date
+
+## How to Run
+1. Ensure you have Python 3 and Jupyter installed
+2. Install required packages: `pip install pandas numpy`
+3. Run the notebook: `jupyter notebook etl_extract.ipynb`
+4. Execute cells in order
+
+## Implementation Details
+- **Full Extraction**: Loads the entire dataset
+- **Incremental Extraction**: Only loads records added/changed since last extraction
+- **Timestamp Tracking**: Uses last_extraction.txt to track when the last extraction occurred
 # 🧪 DSA 2040A - Lab 4: Transform in ETL (Shopping Trends)
 
-## 👩🏽‍💻 Student Info
-- **Name:** Queen Esther Kibegi  
-- **Student ID:** [Insert Your Student ID Here]  
+LAB 4 README FILE
+- **Name:** Queen Esther Kibegi   
 - **Course:** DSA 2040A – Data Science & Analytics  
 - **Lab:** Lab 4 – Transform in ETL  
 - **Dataset Used:** `Shopping_Trends.csv`
