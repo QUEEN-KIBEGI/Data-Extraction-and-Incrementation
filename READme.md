@@ -98,3 +98,73 @@ Your Jupyter Notebook `etl_extract.ipynb` now includes:
 - **Language:** Python (Pandas)
 - **IDE:** Jupyter Notebook
 - **Environment:** Anaconda
+
+# ETL Load Phase - Lab 5
+
+## Project Description
+This Python script implements the Load phase of an ETL (Extract, Transform, Load) pipeline. It loads transformed data from CSV files into both SQLite databases and Parquet files, with support for both full and incremental data loads.
+## Features
+-Functions
+create_sqlite_table(): Creates a SQLite table with specified schema
+save_to_parquet(): Saves DataFrame to Parquet format
+verify_sqlite_data(): Verifies data in SQLite tables
+verify_parquet_data(): Verifies data in Parquet files
+validate_dates(): Validates and converts date columns
+
+**Main Process**
+Setup: Creates output directory and database connections
+Full Data Load:
+Reads transformed_full.csv
+Validates and maps data
+Loads to SQLite and saves as Parquet
+Incremental Data Load:
+Reads transformed_incremental.csv
+Validates and maps data
+Loads to SQLite and saves as Parquet
+Verification: Checks data in all output formats
+
+## 🧱 SQLite Schema Used
+
+```sql
+CREATE TABLE full_data (
+    id INTEGER PRIMARY KEY,
+    customer_name TEXT,
+    product TEXT,
+    quantity INTEGER,
+    unit_price REAL,
+    total_price REAL,
+    order_date TEXT
+);
+
+**Data Mapping**
+The script maps the following fields from source to target:
+Customer ID → id
+Default value → customer_name (set to 'Unknown')
+Category → product
+Default value → quantity (set to 1)
+Purchase Amount (USD) → unit_price
+Purchase Amount (USD) → total_price
+Order Date → order_date
+
+**Output Verification**
+The script automatically verifies:
+First 5 rows of each SQLite table
+First 5 rows of each Parquet file
+
+
+**Error Handling**
+The script includes comprehensive error handling for:
+File operations
+Database operations
+Data validation
+Parquet file operations
+
+**##Technologies Used**
+Python 3.x
+pandas
+sqlite3
+SQLAlchemy
+pyarrow (for Parquet)
+os, datetime
+
+
