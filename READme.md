@@ -112,16 +112,45 @@ verify_parquet_data(): Verifies data in Parquet files
 validate_dates(): Validates and converts date columns
 
 **Main Process**
-Setup: Creates output directory and database connections
-Full Data Load:
-Reads transformed_full.csv
-Validates and maps data
-Loads to SQLite and saves as Parquet
-Incremental Data Load:
-Reads transformed_incremental.csv
-Validates and maps data
-Loads to SQLite and saves as Parquet
-Verification: Checks data in all output formats
+- Setup: Creates output directory and database connections
+- Full Data Load:
+- Reads transformed_full.csv
+- Validates and maps data
+- Loads to SQLite and saves as Parquet
+- Incremental Data Load:
+- Reads transformed_incremental.csv
+- Validates and maps data
+- Loads to SQLite and saves as Parquet
+- Verification: Checks data in all output formats
+**Output Verification**
+- The script automatically verifies:
+- First 5 rows of each SQLite table
+- First 5 rows of each Parquet file
+
+
+## **Error Handling**
+- The script includes comprehensive error handling for:
+- File operations
+- Database operations
+- Data validation
+- Parquet file operations
+
+## **Technologies Used**
+- Python 3.x
+- pandas
+- sqlite3
+- SQLAlchemy
+- pyarrow (for Parquet)
+- os, datetime
+  **Data Mapping**
+- The script maps the following fields from source to target:
+- Customer ID → id
+- Default value → customer_name (set to 'Unknown')
+- Category → product
+- Default value → quantity (set to 1)
+- Purchase Amount (USD) → unit_price
+- Purchase Amount (USD) → total_price
+- Order Date → order_date
 
 ## 🧱 SQLite Schema Used
 
@@ -136,35 +165,8 @@ CREATE TABLE full_data (
     order_date TEXT
 );
 
-**Data Mapping**
-The script maps the following fields from source to target:
-Customer ID → id
-Default value → customer_name (set to 'Unknown')
-Category → product
-Default value → quantity (set to 1)
-Purchase Amount (USD) → unit_price
-Purchase Amount (USD) → total_price
-Order Date → order_date
-
-**Output Verification**
-The script automatically verifies:
-First 5 rows of each SQLite table
-First 5 rows of each Parquet file
 
 
-**Error Handling**
-The script includes comprehensive error handling for:
-File operations
-Database operations
-Data validation
-Parquet file operations
 
-**##Technologies Used**
-Python 3.x
-pandas
-sqlite3
-SQLAlchemy
-pyarrow (for Parquet)
-os, datetime
 
 
